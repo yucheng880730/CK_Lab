@@ -1,5 +1,5 @@
 const LeoToken = artifacts.require("LeoToken");
 
-module.exports = function (deployer) {
-  deployer.deploy(LeoToken);
+module.exports = async function (deployer) {
+  await deployer.deploy(LeoToken);
 };

@@ -18,7 +18,12 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+// tell project to load anything that is in the .env
+require("dotenv").config();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const MNEMONIC = process.env.MNEMONIC;
+const API_KEY = process.env.NODE_URL;
+console.log(MNEMONIC);
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -35,6 +40,27 @@ module.exports = {
    */
 
   networks: {
+    mumbai: {
+      provider: () =>
+        new HDWalletProvider({
+          MNEMONIC,
+          providerOrUrl: `https://rpc-mumbai.maticvigil.com/v1/${API_KEY}`,
+          numberOfAddresses: 1,
+          shareNonce: true,
+        }),
+      network_id: "*",
+    },
+    // mumbai: {
+    //   provider: function () {
+    //     return new HDWalletProvider(
+    //       MNEMONIC,
+    //       `https://rpc-mumbai.maticvigil.com/v1/${API_KEY}`
+    //     );
+    //   },
+    //   network_id: 80001,
+    //   confirmations: 2,
+    //   skipDryRun: true,
+    // },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
