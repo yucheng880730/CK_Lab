@@ -9,7 +9,7 @@ const MNEMONIC = process.env.MNEMONIC;
 const API_KEY = process.env.NODE_KEY;
 
 //* Remember to write the nft address in manually after deploying the contract
-const NFT_CONTRACT_ADDRESS = "0x89Cc43e38F2423F0003Cb060e2468Bb530534D6B";
+const NFT_CONTRACT_ADDRESS = "0xf08c5E60e3e2a1c0F8D1a7A4c4ED6Fe9D6dc1159";
 const OWNER_ADDRESS = "0x909A1228EC026e3100FC700921dcA1c67eA93d63";
 const MUMBAI = `https://rpc-mumbai.maticvigil.com/v1/${API_KEY}`;
 
@@ -34,7 +34,10 @@ async function main() {
 
     //* just mint
     await nftContract.methods
-      .mintItem(OWNER_ADDRESS, `your token json uri`)
+      .mintItem(
+        OWNER_ADDRESS,
+        `https://ipfs.io/ipfs/QmYvhuZybeyX1Q8PQhFkFg3wu8n8YSb1Q5mLnE87GeWugg`
+      )
       .send({ from: OWNER_ADDRESS })
       .then(console.log("minted"))
       .catch((error) => console.log(error));
@@ -48,7 +51,7 @@ async function main() {
     }
     */
   } catch (e) {
-    console.log(e);
+    console.log("there is an error");
   }
 }
 
