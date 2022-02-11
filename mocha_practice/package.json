@@ -1,0 +1,16 @@
+{
+  "name": "mocha_practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js --reporter mochawesome"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^9.2.0",
+    "mochawesome": "^7.0.1",
+    "should": "^13.2.3"
+  }
+}

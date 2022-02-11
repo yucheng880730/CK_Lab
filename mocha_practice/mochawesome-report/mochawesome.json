@@ -1,0 +1,177 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-02-11T06:23:29.810Z",
+    "end": "2022-02-11T06:23:29.820Z",
+    "duration": 10,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d14f160d-4091-49a9-9a45-7a4821ea1eef",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5d9049c5-d4f3-4485-9d8f-f2c3c33f22ec",
+          "title": "calculate average",
+          "fullFile": "C:\\Users\\yucheng\\Desktop\\CK\\mocha_practice\\test\\testAverage.js",
+          "file": "\\test\\testAverage.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return the average of the array",
+              "fullTitle": "calculate average should return the average of the array",
+              "timedOut": false,
+              "duration": 2,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let result = average([1, 2, 3]);\nresult.should.equal(2);\ndone();",
+              "err": {},
+              "uuid": "645d102f-d56f-4761-b53d-acecc6ea0e27",
+              "parentUUID": "5d9049c5-d4f3-4485-9d8f-f2c3c33f22ec",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return NaN when no argument in array",
+              "fullTitle": "calculate average should return NaN when no argument in array",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let result = average([]);\nresult.should.be.NaN;\ndone();",
+              "err": {},
+              "uuid": "4d9bad41-7a8a-47e3-a030-0750a24c934a",
+              "parentUUID": "5d9049c5-d4f3-4485-9d8f-f2c3c33f22ec",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "645d102f-d56f-4761-b53d-acecc6ea0e27",
+            "4d9bad41-7a8a-47e3-a030-0750a24c934a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "180594e1-3866-4712-aad5-c3fa65cc6d5c",
+          "title": "calculate sum",
+          "fullFile": "C:\\Users\\yucheng\\Desktop\\CK\\mocha_practice\\test\\testSum.js",
+          "file": "\\test\\testSum.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return the sum of the array",
+              "fullTitle": "calculate sum should return the sum of the array",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let result = average([1, 2, 3]);\nresult.should.equal(6);\ndone();",
+              "err": {},
+              "uuid": "84ff7383-e052-4279-bab1-8abd200f95d5",
+              "parentUUID": "180594e1-3866-4712-aad5-c3fa65cc6d5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return NaN when no argument in array",
+              "fullTitle": "calculate sum should return NaN when no argument in array",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let result = average([]);\nresult.should.be.NaN;\ndone();",
+              "err": {},
+              "uuid": "5b9ffb1d-039c-46ee-9886-56d6f3e6cac4",
+              "parentUUID": "180594e1-3866-4712-aad5-c3fa65cc6d5c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "84ff7383-e052-4279-bab1-8abd200f95d5",
+            "5b9ffb1d-039c-46ee-9886-56d6f3e6cac4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
