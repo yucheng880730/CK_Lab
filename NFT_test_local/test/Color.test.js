@@ -1,3 +1,5 @@
+const { assert } = require("chai");
+
 const Color = artifacts.require("./Color.sol");
 
 require("chai")
@@ -69,6 +71,13 @@ contract("Color", (accounts) => {
 
       let expected = ["#EC058E", "#5386E4", "#FFFFFF", "#000000"];
       assert.equal(result.join(","), expected.join(","));
+    });
+  });
+
+  describe("Time of the token minted", async () => {
+    it("get the time", async () => {
+      const time = await contract.Time_call();
+      assert.equal(time, "now time");
     });
   });
 });

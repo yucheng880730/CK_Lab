@@ -10,6 +10,14 @@ contract Color is ERC721Full {
   constructor() ERC721Full("Color", "COLOR") public {
   }
 
+  function Time_call() public returns (uint256) {
+    return now;
+  }
+
+  function burn(uint256 tokenId) public {
+    burn(tokenId);
+  }
+
   // E.G. color = "#FFFFFF"(white)
   // Require unique color
   // Color - add it
