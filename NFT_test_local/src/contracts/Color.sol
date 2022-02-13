@@ -5,6 +5,8 @@ import "./ERC721Full.sol";
 contract Color is ERC721Full {
     
   string[] public colors;
+  uint public timeStamp;
+
   mapping(string => bool) _colorExists;
 
   constructor() ERC721Full("Color", "COLOR") public {
@@ -27,6 +29,7 @@ contract Color is ERC721Full {
     require(!_colorExists[_color]);
     uint _id = colors.push(_color);
     _mint(msg.sender, _id);
+    timeStamp = block.timestamp;
     _colorExists[_color] = true;
   }
 
