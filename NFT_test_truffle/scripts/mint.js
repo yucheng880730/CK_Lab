@@ -4,18 +4,20 @@ const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
 
-//* vars
+//*vars
 const MNEMONIC = process.env.MNEMONIC;
-const API_KEY = process.env.NODE_URL;
+const API_KEY = process.env.NODE_KEY;
 
 //* Remember to write the nft address in manually after deploying the contract
-const NFT_CONTRACT_ADDRESS = "0xeC914E69464Cd3D6c267d4D48b95a457a59a3b38";
+const NFT_CONTRACT_ADDRESS = "0xf3C6D90B2Eb7B70f2F2b0785e62259c894bED1f5";
 const OWNER_ADDRESS = "0x909A1228EC026e3100FC700921dcA1c67eA93d63";
 const MUMBAI = `https://rpc-mumbai.maticvigil.com/v1/${API_KEY}`;
+const MATIC = `https://rpc-mainnet.maticvigil.com/v1/${API_KEY}`;
+const NUM_ITEMS = 5;
 
-//* Parse the contract artifact for ABI reference.
+//*Parse the contract artifact for ABI reference.
 let rawdata = fs.readFileSync(
-  path.resolve(__dirname, "../build/contracts/LeoToken.json")
+  path.resolve(__dirname, "../build/contracts/GameItem.json")
 );
 let contractAbi = JSON.parse(rawdata);
 const NFT_ABI = contractAbi.abi;
@@ -41,6 +43,15 @@ async function main() {
       .send({ from: OWNER_ADDRESS })
       .then(console.log("minted"))
       .catch((error) => console.log(error));
+
+    //* mint for a certain amount
+    /*
+    for (var i = 1; i < NUM_ITEMS; i++) {
+      await nftContract.methods
+        .mintItem(OWNER_ADDRESS, `https://ipfs.io/ipfs/QmZ13J2TyXTKjjyA46rYENRQYxEKjGtG6qyxUSXwhJZmZt/${i}.json`)
+        .send({ from: OWNER_ADDRESS }).then(console.log('minted')).catch(error => console.log(error));
+    }
+    */
   } catch (e) {
     console.log(e);
   }

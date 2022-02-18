@@ -1,24 +1,16 @@
 {
-  "name": "nft_test",
+  "name": "truffle-tutorial-erc721",
   "version": "1.0.0",
   "description": "",
-  "main": "mint.js",
-  "scripts": {
-    "start": "node mint.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "hardhat": "^0.0.7",
-    "truffle": "^5.1.33"
-  },
+  "main": "truffle-config.js",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.4.2",
-    "@truffle/hdwallet-provider": "^1.7.0",
-    "dotenv": "^14.2.0",
-    "truffle-flattener": "^1.5.0",
-    "truffle-hdwallet-provider": "^1.0.6",
-    "web3": "^1.2.6"
+    "@openzeppelin/contracts": "^4.3.0",
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "web3": "^1.5.0"
+  },
+  "devDependencies": {
+    "truffle-plugin-verify": "^0.5.15"
   }
 }
