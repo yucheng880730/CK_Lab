@@ -19,7 +19,7 @@ contract GameItem is ERC721URIStorage, Ownable {
 
     // for opensea collection 
     function contractURI() public pure returns (string memory) {
-        return "https://ipfs.io/ipfs/QmYvhuZybeyX1Q8PQhFkFg3wu8n8YSb1Q5mLnE87GeWugg";
+        return "https://ipfs.io/ipfs/QmYruWhBikBJxkUMUcmxaKiu6DXSjnoZmzyqdPXt7TDodH";
     }
 
     
