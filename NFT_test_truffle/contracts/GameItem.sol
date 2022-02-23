@@ -19,7 +19,7 @@ contract GameItem is ERC721URIStorage, Ownable {
 
     // for opensea collection 
     function contractURI() public pure returns (string memory) {
-        return "https://ipfs.io/ipfs/QmYruWhBikBJxkUMUcmxaKiu6DXSjnoZmzyqdPXt7TDodH";
+        return "https://gateway.pinata.cloud/ipfs/Qmc9BjY68jcQwz2G5a1gKCi1HBVPKrboZJhd4XLf6xUZML";
     }
 
     
@@ -29,9 +29,11 @@ contract GameItem is ERC721URIStorage, Ownable {
         returns (uint256)
     {
         _tokenIds.increment();
+
         uint256 newItemId = _tokenIds.current();
         _mint(player, newItemId);
         _setTokenURI(newItemId, tokenURI);
+        
         return newItemId;
     }
 

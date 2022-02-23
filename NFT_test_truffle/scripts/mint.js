@@ -38,7 +38,7 @@ async function main() {
     await nftContract.methods
       .mintItem(
         OWNER_ADDRESS,
-        `https://gateway.pinata.cloud/ipfs/QmYruWhBikBJxkUMUcmxaKiu6DXSjnoZmzyqdPXt7TDodH`
+        `https://gateway.pinata.cloud/ipfs/QmVxDmRehu1US58vgWGunT14oPVrgLBG7Jm4LSuLW7CVQ6`
       )
       .send({ from: OWNER_ADDRESS })
       .then(console.log("minted"))
