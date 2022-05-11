@@ -42,6 +42,7 @@
     </div>
   </div>
 
+  <script type="text/javascript" src="./script/qrcode.js"></script>
   <script>
     window.userAddress = null;
     window.onload = async () => {
@@ -136,32 +137,61 @@
         return;
       }
 
-      console.log(items);
+      // console.log(items);
 
       items.forEach((nft) => {
         const { name, image_url, description, permalink } = nft;
 
         const newElement = document.createElement("div");
         newElement.innerHTML = `
-          <!-- Opensea listing item-->
-          <a href='${permalink}' target="_blank">
+            <!-- Opensea listing item-->
             <div class='flex flex-col'>
-              <img
-                src='${image_url}'
-                class='w-full rounded-lg' />
+              <a href='${permalink}' target="_blank">
+                <img
+                  src='${image_url}'
+                  class='w-full rounded-lg' />
+              </a>
               <div class='flex-col w-full space-y-1'>
                 <p class='text-gray-800 text-lg'>${name}</p>
                 <p class='text-gray-500 text-xs word-wrap'>${
                   description ?? ""
                 }</p>
               </div>
+              <button onclick="verifyNFT()">QRcode Verify</button>
             </div>
-          </a>
-          <!-- End Opensea listing item-->
-        `;
-
+            <!-- End Opensea listing item-->
+          `;
         osContainer.appendChild(newElement);
       });
+    }
+
+    // verify the ownership of specfic NFT
+    async function verifyNFT() {
+      // verify fail
+      if (false) {
+        console.log("verify fail :( !!");
+      }
+
+      // verify success
+      generateQRcode();
+    }
+
+    async function generateQRcode() {
+      var qrcode = new QRCode("test", {
+        text: "http://jindo.dev.naver.com/collie",
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      });
+
+      const showQRcode = document.createElement("div");
+      showQRcode.innerHTML = `
+        <!-- Start show QRcode-->
+        
+        <!-- End show QRcode-->
+      `;
     }
   </script>
 </body>
