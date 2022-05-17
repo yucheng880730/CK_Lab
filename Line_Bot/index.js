@@ -1,3 +1,4 @@
+// import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 const line = require("@line/bot-sdk");
 const express = require("express");
 
@@ -25,6 +26,19 @@ app.post("/callback", line.middleware(config), (req, res) => {
       res.status(500).end();
     });
 });
+
+// const API_KEY = process.env.ALCHEMY_API;
+
+// // Using HTTPS
+// const web3 = createAlchemyWeb3(
+//   `https://eth-goerli.alchemyapi.io/v2/${API_KEY}`
+// );
+
+// const nfts = await web3.alchemy.getNfts({
+//   owner: "0x909A1228EC026e3100FC700921dcA1c67eA93d63",
+// });
+
+// console.log(nfts);
 
 // event handler
 function handleEvent(event) {
