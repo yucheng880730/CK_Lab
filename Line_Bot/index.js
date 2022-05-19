@@ -1,9 +1,9 @@
-// import { createAlchemyWeb3 } from "@alch/alchemy-web3";
-const line = require("@line/bot-sdk");
-const express = require("express");
+import * as line from "@line/bot-sdk";
+import express from "express";
+import { getEthAddress, getNFTAsset, getNFTNumber } from "./nft/fetch.js";
 
 // create LINE SDK config from env variables
-require("dotenv").config();
+import "dotenv/config";
 const config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
   channelSecret: process.env.CHANNEL_SECRET,
@@ -27,21 +27,8 @@ app.post("/callback", line.middleware(config), (req, res) => {
     });
 });
 
-// const API_KEY = process.env.ALCHEMY_API;
-
-// // Using HTTPS
-// const web3 = createAlchemyWeb3(
-//   `https://eth-goerli.alchemyapi.io/v2/${API_KEY}`
-// );
-
-// const nfts = await web3.alchemy.getNfts({
-//   owner: "0x909A1228EC026e3100FC700921dcA1c67eA93d63",
-// });
-
-// console.log(nfts);
-
 // event handler
-function handleEvent(event) {
+async function handleEvent(event) {
   if (event.type !== "message" || event.message.type !== "text") {
     // ignore non-text-message event
     return Promise.resolve(null);
@@ -49,6 +36,20 @@ function handleEvent(event) {
     const NFT_reply = { type: "text", text: "想買NFT嗎?!" };
 
     return client.replyMessage(event.replyToken, NFT_reply);
+  } else if (event.message.text === "地址") {
+    const ethAddress = await getEthAddress(
+      "0x909A1228EC026e3100FC700921dcA1c67eA93d63"
+    );
+    const address = { type: "text", text: ethAddress };
+
+    return client.replyMessage(event.replyToken, address);
+  } else if (event.message.text === "數量") {
+    const NFTAmount = await getNFTNumber(
+      "0x909A1228EC026e3100FC700921dcA1c67eA93d63"
+    );
+    const amount = { type: "text", text: NFTAmount };
+
+    return client.replyMessage(event.replyToken, amount);
   } else {
     // create a echoing text message
     const echo = { type: "text", text: event.message.text };
