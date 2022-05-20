@@ -50,6 +50,40 @@ async function handleEvent(event) {
     const amount = { type: "text", text: NFTAmount };
 
     return client.replyMessage(event.replyToken, amount);
+  } else if (event.message.text === "樣式") {
+    const asset = await getNFTAsset(
+      "0x0928A0B5D4aa6ba63EB807011F7505a00220eaAF"
+    );
+
+    return client.replyMessage(event.replyToken, {
+      type: "template",
+      altText: "Show your NFT asset",
+      template: {
+        type: "carousel",
+        columns: [
+          {
+            thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
+            imageBackgroundColor: "#FFFFFF",
+            title: `${asset.nameArray}`,
+            text: `${asset.typeArray}`,
+            actions: [
+              {
+                type: "postback",
+                label: "Sell",
+                data: "sell NFT",
+              },
+              {
+                type: "uri",
+                label: "Check Etherscan",
+                uri: "https://tw.yahoo.com/",
+              },
+            ],
+          },
+        ],
+        imageAspectRatio: "rectangle",
+        imageSize: "cover",
+      },
+    });
   } else {
     // create a echoing text message
     const echo = { type: "text", text: event.message.text };

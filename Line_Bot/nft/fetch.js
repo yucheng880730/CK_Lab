@@ -40,14 +40,32 @@ export async function getNFTAsset(_address) {
     owner: ownerAddress,
   });
 
+  // nfts.ownedNfts.slice(0);
+  // console.log(nfts);
+
+  // NFTname = nfts.metadata.name;
+  // TokenType = nfts.metadata.name;
+  // Image_url = nfts.media[0].raw;
+
+  let nameArray = [];
+  let typeArray = [];
+  let imageArray = [];
+
   for (const nft of nfts.ownedNfts.slice(0, 5)) {
     const name = nft.metadata.name;
     const tokenType = nft.id.tokenMetadata.tokenType;
     const image_url = nft.media[0].raw;
 
-    // return name, tokenType, image_url;
-    console.log(name);
-    console.log(tokenType);
-    console.log(image_url);
+    nameArray.push(name);
+    typeArray.push(tokenType);
+    imageArray.push(image_url);
+
+    // console.log(name);
+    // console.log(tokenType);
+    // console.log(image_url);
   }
+  return { nameArray, typeArray, imageArray };
 }
+
+// const test = await getNFTAsset("0x0928A0B5D4aa6ba63EB807011F7505a00220eaAF");
+// console.log(test.imageArray);
