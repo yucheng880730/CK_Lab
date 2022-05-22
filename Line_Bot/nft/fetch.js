@@ -50,22 +50,28 @@ export async function getNFTAsset(_address) {
   let nameArray = [];
   let typeArray = [];
   let imageArray = [];
+  let contractAddressArray = [];
 
   for (const nft of nfts.ownedNfts.slice(0, 5)) {
     const name = nft.metadata.name;
     const tokenType = nft.id.tokenMetadata.tokenType;
-    const image_url = nft.media[0].raw;
+    const image_url = nft.media[0].gateway;
+    const contractAddress = nft.contract;
 
     nameArray.push(name);
     typeArray.push(tokenType);
     imageArray.push(image_url);
+    contractAddressArray.push(contractAddress.address);
 
     // console.log(name);
     // console.log(tokenType);
     // console.log(image_url);
   }
-  return { nameArray, typeArray, imageArray };
+  return { nameArray, typeArray, imageArray, contractAddressArray };
 }
 
 // const test = await getNFTAsset("0x0928A0B5D4aa6ba63EB807011F7505a00220eaAF");
 // console.log(test.imageArray);
+// console.log(test.nameArray);
+// console.log(test.typeArray);
+// console.log(test.contractAddressArray);

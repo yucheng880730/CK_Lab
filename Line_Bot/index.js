@@ -27,11 +27,23 @@ app.post("/callback", line.middleware(config), (req, res) => {
     });
 });
 
+let EthAddress;
+const userId = process.env.USERID;
+client.pushMessage(userId, { type: "text", text: "請輸入錢包地址" });
+
 // event handler
 async function handleEvent(event) {
   if (event.type !== "message" || event.message.type !== "text") {
     // ignore non-text-message event
     return Promise.resolve(null);
+  } else if (event.message.text.match("0x")) {
+    EthAddress = event.message.text;
+    const addressReply = await {
+      type: "text",
+      text: "你的錢包地址是: " + event.message.text,
+    };
+
+    return client.replyMessage(event.replyToken, addressReply);
   } else if (event.message.text === "NFT") {
     const NFT_reply = { type: "text", text: "想買NFT嗎?!" };
 
@@ -44,16 +56,12 @@ async function handleEvent(event) {
 
     return client.replyMessage(event.replyToken, address);
   } else if (event.message.text === "數量") {
-    const NFTAmount = await getNFTNumber(
-      "0x909A1228EC026e3100FC700921dcA1c67eA93d63"
-    );
+    const NFTAmount = await getNFTNumber(EthAddress);
     const amount = { type: "text", text: NFTAmount };
 
     return client.replyMessage(event.replyToken, amount);
   } else if (event.message.text === "樣式") {
-    const asset = await getNFTAsset(
-      "0x0928A0B5D4aa6ba63EB807011F7505a00220eaAF"
-    );
+    const asset = await getNFTAsset(EthAddress);
 
     return client.replyMessage(event.replyToken, {
       type: "template",
@@ -62,7 +70,7 @@ async function handleEvent(event) {
         type: "carousel",
         columns: [
           {
-            thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
+            thumbnailImageUrl: `${asset.imageArray}`,
             imageBackgroundColor: "#FFFFFF",
             title: `${asset.nameArray}`,
             text: `${asset.typeArray}`,
@@ -75,7 +83,7 @@ async function handleEvent(event) {
               {
                 type: "uri",
                 label: "Check Etherscan",
-                uri: "https://tw.yahoo.com/",
+                uri: `https://rinkeby.etherscan.io/address/${asset.contractAddressArray}`,
               },
             ],
           },
